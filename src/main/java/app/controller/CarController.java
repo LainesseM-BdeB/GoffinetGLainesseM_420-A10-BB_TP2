@@ -4,6 +4,8 @@ import app.model.Car;
 import app.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -13,8 +15,18 @@ public class CarController {
     @Autowired
     private CarService carService;
 
-//    @GetMapping("/")
-//    public String welcome() {return "index";}
+    @GetMapping("/")
+    public RedirectView start() {
+        return new RedirectView("/homepage");
+    }
+
+    @GetMapping("/homepage")
+    public ModelAndView index() {
+        ModelAndView model = new ModelAndView("index");
+        List<Car> cars = list();
+        model.addObject("cars", cars);
+        return model;
+    }
 
     @GetMapping("/cars")
     public List<Car> list() {
