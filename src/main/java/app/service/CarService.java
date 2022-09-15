@@ -17,4 +17,21 @@ public class CarService {
 
     public List<Car> list() {return carRepository.findAll();}
 
+    public void rent(Integer id, String action) {
+        Car car = carRepository.findById(id).orElseThrow(
+                () -> new IllegalStateException(
+                        "Aucune voiture avec l'id: " + id
+                )
+        );
+
+        if (action.equals("RENT")) {
+            car.setRented(true);
+        } else if (action.equals("RETURN")) {
+            car.setRented(false);
+        } else {
+            throw new IllegalStateException("L'action est requise");
+        }
+
+    }
+
 }
