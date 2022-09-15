@@ -13,8 +13,8 @@ public class CarController {
     @Autowired
     private CarService carService;
 
-    @GetMapping("/")
-    public String welcome() {return "Hello World!";}
+//    @GetMapping("/")
+//    public String welcome() {return "index";}
 
     @GetMapping("/cars")
     public List<Car> list() {
