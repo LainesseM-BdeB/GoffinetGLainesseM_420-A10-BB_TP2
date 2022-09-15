@@ -1,0 +1,1 @@
+INSERT INTO car (year, mileage, is_rented, model, license, price) VALUES (2020, 39000, false, 'Nissan Rogue', '6KL BBQ', 33000)
