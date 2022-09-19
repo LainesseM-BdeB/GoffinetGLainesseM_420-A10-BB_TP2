@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage cars</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+
+<div class="container-fluid text-center">
+    <div class="h2">
+        <a class="h3" th:href="@{/cars/new}">Add new car</a>
+    </div>
+
+    <div th:if="${successMessage}" class="alert alert-success text-center">
+        [[${successMessage}]]
+    </div>
+    <div th:if="${warningMessage}" class="alert alert-danger text-center">
+        [[${warningMessage}]]
+    </div>
+
+    <div>
+        <table class="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Mileage</th>
+                <th>License</th>
+                <th>Price</th>
+                <th>Rented</th>
+                <th></th>
+            </tr>
+            <th:block th:each="car : ${carsList}">
+                <tr>
+                    <td>[[${car.productId}]]</td>
+                    <td>[[${car.model}]]</td>
+                    <td>[[${car.year}]]</td>
+                    <td>[[${car.mileage}]]</td>
+                    <td>[[${car.license}]]</td>
+                    <td>[[${car.price}]]</td>
+                    <td>[[${car.rented}]]</td>
+                    <td>
+                        <a class="h4 me-3" th:href="@{'/cars/edit/' + ${car.productId}}">Edit</a>
+                        <a class="h4" th:href="@{'/cars/delete/' + ${car.productId}}">Delete</a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
