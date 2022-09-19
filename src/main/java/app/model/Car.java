@@ -1,9 +1,6 @@
 package app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Car {
@@ -11,76 +8,103 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productId;
-    private Integer year;
-    private Integer mileage;
-    private boolean isRented;
+
+    @Column(nullable = false, length = 15)
     private String model;
+
+    @Column(nullable = false, length = 4)
+    private Integer year;
+
+    @Column(nullable = false, length = 10)
+    private Integer mileage;
+
+    @Column(nullable = false,length = 7)
     private String license;
+
+    @Column(nullable = false, length = 10)
     private Integer price;
+
+    @Column(nullable = false, name = "is_rented")
+    private boolean rented;
 
     public Car() {
     }
 
-    public Car(Integer productId, Integer year, Integer mileage, String model, String license, Integer price) {
-        this.productId = productId;
+    public Car(String model, Integer year, Integer mileage, String license, Integer price, boolean rented) {
+        this.model = model;
         this.year = year;
         this.mileage = mileage;
-        this.isRented = false;
-        this.model = model;
         this.license = license;
         this.price = price;
-    }
-
-    public void setMileage(Integer mileage) {
-        this.mileage = mileage;
-    }
-
-    public void setRented(boolean rented) {
-        isRented = rented;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
+        this.rented = rented;
     }
 
     public Integer getProductId() {
         return productId;
     }
 
-    public Integer getYear() {
-        return year;
-    }
-
-    public Integer getMileage() {
-        return mileage;
-    }
-
-    public boolean isRented() {
-        return isRented;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public String getModel() {
         return model;
     }
 
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(Integer mileage) {
+        this.mileage = mileage;
+    }
+
     public String getLicense() {
         return license;
+    }
+
+    public void setLicense(String license) {
+        this.license = license;
     }
 
     public Integer getPrice() {
         return price;
     }
 
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public boolean isRented() {
+        return rented;
+    }
+
+    public void setRented(boolean rented) {
+        this.rented = rented;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
                 "productId=" + productId +
+                ", model='" + model + '\'' +
                 ", year=" + year +
                 ", mileage=" + mileage +
-                ", isRented=" + isRented +
-                ", model='" + model + '\'' +
                 ", license='" + license + '\'' +
                 ", price=" + price +
+                ", rented=" + rented +
                 '}';
     }
 }

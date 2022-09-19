@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="text-center h2">
+        [[${pageTitle}]]
+    </div>
+    <form th:action="@{/cars/save}" method="post" th:object="${car}" style="max-width: 450px; margin: 0 auto;">
+          <input type="hidden" th:field="*{productId}">
+        <div class="border border-secondary rounded p-3">
+            <div class="form-group row m-1">
+                <input type="hidden" th:field="*{productId}"/>
+                <label class="col-sm-3 col-form-label" for="model">Model</label>
+                <div class="col-sm-6">
+                    <input type="text" id="model" th:field="*{model}"
+                           class="form-control" required minlength="2" maxlength="15"/>
+                </div>
+            </div>
+            <div class="form-group row m-1">
+            <label class="col-sm-3 col-form-label" for="year">Year</label>
+            <div class="col-sm-6">
+                <input type="number" id="year" th:field="*{year}"
+                       class="form-control" required minlength="4" maxlength="4"/>
+            </div>
+            </div>
+            <div class="form-group row m-1">
+                <label class="col-sm-3 col-form-label" for="mileage">Mileage</label>
+                <div class="col-sm-5">
+                    <input type="number" id="mileage" th:field="*{mileage}"
+                           class="form-control" required minlength="1" maxlength="10"/>
+                </div>
+                <div class="col-sm-1 col-form-label">km</div>
+            </div>
+            <div class="form-group row m-1">
+                <label class="col-sm-3 col-form-label" for="license">License</label>
+                <div class="col-sm-6">
+                    <input type="text" id="license" th:field="*{license}"
+                           class="form-control" required minlength="2" maxlength="7"/>
+                </div>
+            </div>
+            <div class="form-group row m-1">
+                <label class="col-sm-3 col-form-label" for="price">Price</label>
+                <div class="col-sm-5">
+                    <input type="number" id="price" th:field="*{price}"
+                           class="form-control" required minlength="2" maxlength="10"/>
+                </div>
+                <div class="col-sm-1 col-form-label">$</div>
+            </div>
+            <div class="form-group row m-1">
+                <label class="col-sm-3 col-form-label" for="rented">Rented</label>
+                <div class="col-sm-6">
+                    <input type="checkbox" id="rented" th:field="*{rented}"/>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary m-2">Save</button>
+                <a type="button" class="btn btn-secondary m-2" th:href="@{/cars}">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
