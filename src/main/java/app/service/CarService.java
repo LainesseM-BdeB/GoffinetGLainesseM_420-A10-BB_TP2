@@ -10,6 +10,9 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Classe "service" des voitures pour les manipulations en BD
+ */
 @Service
 @Transactional
 public class CarService {

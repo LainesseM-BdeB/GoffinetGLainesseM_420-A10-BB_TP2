@@ -8,8 +8,13 @@
 <body>
 
 <div class="container-fluid text-center">
-    <div class="h2">
-        <a class="h3" th:href="@{/cars/new}">Add new car</a>
+    <div>
+        <a th:href="@{/cars/new}">Add new car</a>
+    </div>
+
+    <div>
+        <a type="button" class="btn btn-primary m-2" th:href="@{/cars}">List of all cars</a>
+        <a type="button" class="btn btn-primary m-2" th:href="@{/rentedcars}">List of rented cars</a>
     </div>
 
     <div th:if="${successMessage}" class="alert alert-success text-center">
@@ -29,6 +34,7 @@
                 <th>License</th>
                 <th>Price</th>
                 <th>Rented</th>
+                <th>Actions</th>
                 <th></th>
             </tr>
             <th:block th:each="car : ${carsList}">
@@ -41,8 +47,12 @@
                     <td>[[${car.price}]]</td>
                     <td>[[${car.rented}]]</td>
                     <td>
-                        <a class="h4 me-3" th:href="@{'/cars/edit/' + ${car.productId}}">Edit</a>
-                        <a class="h4" th:href="@{'/cars/delete/' + ${car.productId}}">Delete</a>
+                        <a type="button" class="btn btn-primary me-2" th:href="@{'/cars/rent/' + ${car.productId}}">Rent</a>
+                        <a type="button" class="btn btn-primary" th:href="@{'/cars/return/' + ${car.productId}}">Return</a>
+                    </td>
+                    <td>
+                        <a class="me-3" th:href="@{'/cars/edit/' + ${car.productId}}">Edit</a>
+                        <a th:href="@{'/cars/delete/' + ${car.productId}}">Delete</a>
                     </td>
                 </tr>
             </th:block>

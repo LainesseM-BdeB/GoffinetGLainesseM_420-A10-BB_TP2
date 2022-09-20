@@ -2,6 +2,9 @@ package app.model;
 
 import javax.persistence.*;
 
+/**
+ * Classe entité pour l'objet "voiture"
+ */
 @Entity
 public class Car {
 
