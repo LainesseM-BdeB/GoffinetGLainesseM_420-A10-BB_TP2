@@ -54,9 +54,11 @@ public class CarController {
         }
         if (rentedCarsList.isEmpty()) {
             ra.addFlashAttribute("warningMessage", "There is currently no rented car");
+            return "redirect:/cars";
+        } else {
+            model.addAttribute("carsList", rentedCarsList);
+            return "/cars";
         }
-        model.addAttribute("carsList", rentedCarsList);
-        return "redirect:/cars";
     }
 
     /**
