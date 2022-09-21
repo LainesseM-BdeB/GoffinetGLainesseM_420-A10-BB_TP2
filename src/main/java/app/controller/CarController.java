@@ -65,7 +65,7 @@ public class CarController {
      * @param ra pour afficher un message de succès (voiture louée) ou d'information (voiture déjà louée)
      * @return l'attribut "loué" de la voiture est sauvegardé à "true" et affiché comme tel dans la BD et la page
      */
-    @PutMapping("/cars/rent/{id}")
+    @GetMapping("/cars/rent/{id}")
     public String rentCar(@PathVariable("id") Integer id, RedirectAttributes ra) {
         try {
             Car car = carService.getById(id);
@@ -89,7 +89,7 @@ public class CarController {
      * @param ra pour afficher un message de succès (voiture retournée) ou d'information (voiture déjà retournée)
      * @return l'attribut "loué" de la voiture est sauvegardé à "false" et affiché comme tel dans la BD et la page
      */
-    @PutMapping("/cars/return/{id}")
+    @GetMapping("/cars/return/{id}")
     public String returnCar(@PathVariable("id") Integer id, RedirectAttributes ra) {
         try {
             Car car = carService.getById(id);
@@ -139,7 +139,7 @@ public class CarController {
      * @param ra pour afficher un message d'erreur (voiture qui n'existe pas)
      * @return l'affichage du formulaire à compléter pour modifier les informations de la voiture
      */
-    @PutMapping("/cars/edit/{id}")
+    @GetMapping("/cars/edit/{id}")
     public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
         try {
             Car car = carService.getById(id);
@@ -158,7 +158,7 @@ public class CarController {
      * @param ra pour afficher un message d'erreur (voiture qui n'existe pas)
      * @return la suppression de la voiture dans la BD et au niveau de l'affichage dans la page
      */
-    @DeleteMapping("/cars/delete/{id}")
+    @GetMapping("/cars/delete/{id}")
     public String deleteCar(@PathVariable("id") Integer id, RedirectAttributes ra) {
         try {
             carService.delete(id);

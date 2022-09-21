@@ -12,22 +12,22 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productId;
 
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false, length = 25)
     private String model;
 
-    @Column(nullable = false, length = 4)
+    @Column(nullable = false)
     private Integer year;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false)
     private Integer mileage;
 
     @Column(nullable = false,length = 7)
     private String license;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false)
     private Integer price;
 
-    @Column(nullable = false, name = "is_rented")
+    @Column(nullable = false)
     private boolean rented;
 
     public Car() {
